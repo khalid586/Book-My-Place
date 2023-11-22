@@ -1,11 +1,10 @@
 import Header from "../Header"
+import Layout from "../Layout"
 
 export default function LoginPage(){
     return (
-        <div>
-            <Header/>
-            <br></br>
-            <p>This is testing puspose. Login Page</p>
+        <div className="py-4">
+            <b>This is testing puspose. Login Page</b>
         </div>
 
     )
