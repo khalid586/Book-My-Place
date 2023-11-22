@@ -11,7 +11,7 @@ export default function Header(){
                 Book My Place
             </span>
         </a>
-        <div className='flex border gap-4 border-red-600 rounded-full shadow-slate-600 shadow-lg py-2 px-4'>
+        <div className='flex border gap-4 border-red-600 rounded-full shadow-gray-400 shadow-md py-2 px-4'>
             <div>My Place</div>
                 <div className='border-l border-green-600'></div>
             <div>My Time</div>
