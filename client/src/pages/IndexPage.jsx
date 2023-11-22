@@ -5,8 +5,9 @@ import LoginPage from "./LoginPage"
 
 export default function IndexPage(){
     return(
-        <div className="py-4">
+        <div className="py-10">
            <b> this is index page</b>
+           
         </div>
     )
 }
