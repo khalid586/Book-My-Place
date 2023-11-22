@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className='bg-red-500'>
-        i am khalid
+        this is khalid
       </div>
       
     </>
