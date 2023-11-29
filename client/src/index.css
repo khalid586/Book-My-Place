@@ -14,3 +14,8 @@ button.primary{
     background-color: #f53850;
     @apply bg-primary my-4 py-2 w-1/2 text-white rounded-full
 }
+
+button.green{
+    background-color: greenyellow;
+    @apply bg-green-400 my-4 py-2 w-1/2 text-white rounded-full
+}
