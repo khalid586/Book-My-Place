@@ -1,8 +1,13 @@
 const express = require('express')
+const cors = require('cors')
 const app = express()
 
+app.use(cors({
+    credentials: true,
+    origin:'http://localhost:5173'
+}))
 app.get('/test',(req,res) =>{
-    res.json('okay done')
+    res.json('hello okay this is done!!!')
 });
 
 app.listen(4000)

@@ -1,13 +1,31 @@
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import axios from "axios"
 
 export default function RegisterPage(){
+    const [name,setName] = useState('')
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+
+    function registerUser(ev){
+        ev.preventDefault();
+        axios.get('/test')
+    }
+
     return (
         <div className="py-20">
             <p className="text-4xl pb-4">Register</p>
-            <form>
-                <input type="text" placeholder = "Your Name" name="" id="" /> <br /> 
-                <input type="email" placeholder="your@gmail.com"/><br></br>
-                <input type="password" placeholder="password" /><br></br>
+            <form onSubmit={registerUser}>
+                <input type="text" 
+                placeholder = "Your Name"
+                value={name} 
+                onChange={ev => setName(ev.target.value)}/> <br /> 
+                <input type="email" placeholder="your@gmail.com"
+                value={email} 
+                onChange={ev => setEmail(ev.target.value)}/><br></br>
+                <input type="password" placeholder="password" 
+                value={password} 
+                onChange={ev => setPassword(ev.target.value)}/><br></br>
                 <button className="green">Register</button>
             </form>
 
