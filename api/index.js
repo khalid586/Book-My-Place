@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const app = express()
 
-app.use(express.json())
+app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
 
 app.use(cors({
     credentials: true,
