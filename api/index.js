@@ -13,6 +13,7 @@ app.use(cors({
 
 mongoose.connect(process.env.MONGO_URL)
 
+
 app.post('/register',(req,res) =>{
     const {name,email,password} = req.body
     res.json({name,email,password})
