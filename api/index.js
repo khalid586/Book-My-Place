@@ -1,22 +1,32 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
-const { default: mongoose } = require('mongoose')
+const mongoose = require('mongoose')
+const User = require('./models/User.js')
 const app = express()
-require('dotenv').config()
+
 
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
+
 
 app.use(cors({
     credentials: true,
     origin:'http://localhost:5173'
 }))
 
+
 mongoose.connect(process.env.MONGO_URL)
+console.log(process.env.MONGO_URL)
 
-
-app.post('/register',(req,res) =>{
+app.post('/register',async (req,res) =>{
     const {name,email,password} = req.body
-    res.json({name,email,password})
+    const UserDoc = await User.create({
+        name,
+        email,
+        password,
+    })
+
+    res.json(UserDoc)
 })
 
 app.get('/test',(req,res) =>{
@@ -25,4 +35,16 @@ app.get('/test',(req,res) =>{
 
 app.listen(4000)
 
-// 
+
+// Listen for the open event
+mongoose.connection.once('open', () => {
+  console.log('Connected to MongoDB successfully!');
+});
+
+// Listen for the error event
+mongoose.connection.on('error', (error) => {
+  console.error('MongoDB connection error:', error);
+});
+
+
+
