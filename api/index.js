@@ -15,14 +15,21 @@ app.use(cors({
 mongoose.connect(process.env.MONGO_URL)
 
 app.post('/register',async (req,res) =>{
-    const {name,email,password} = req.body
-    const UserDoc = await User.create({
+    try{
+      const {name,email,password} = req.body
+      const UserDoc = await User.create({
         name,
         email,
         password,
-    })
+      })
 
-    res.json(UserDoc)
+      res.json(UserDoc)
+    
+    }catch(e){
+      let message = 'The credentials have been used before and the error is : '+ e
+      res.json(message)
+      
+    }
 })
 
 
