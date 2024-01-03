@@ -5,18 +5,14 @@ const mongoose = require('mongoose')
 const User = require('./models/User.js')
 const app = express()
 
-
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
-
 
 app.use(cors({
     credentials: true,
     origin:'http://localhost:5173'
 }))
 
-
 mongoose.connect(process.env.MONGO_URL)
-console.log(process.env.MONGO_URL)
 
 app.post('/register',async (req,res) =>{
     const {name,email,password} = req.body
@@ -28,6 +24,7 @@ app.post('/register',async (req,res) =>{
 
     res.json(UserDoc)
 })
+
 
 app.get('/test',(req,res) =>{
     res.json('')
@@ -45,6 +42,3 @@ mongoose.connection.once('open', () => {
 mongoose.connection.on('error', (error) => {
   console.error('MongoDB connection error:', error);
 });
-
-
-
