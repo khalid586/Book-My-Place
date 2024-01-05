@@ -28,7 +28,7 @@ app.post('/register',async (req,res) =>{
     
     }catch(e){
       let message = 'The credentials have been used before and the error is : '+ e
-      res.json(message)
+      res.status(422).json(message)
       
     }
 })

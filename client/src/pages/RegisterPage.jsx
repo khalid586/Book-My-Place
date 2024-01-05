@@ -1,11 +1,12 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
 
 export default function RegisterPage(){
-    const [name,setName] = useState('')
-    const [email,setEmail] = useState('')
-    const [password,setPassword] = useState('')
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [redirect,setRedirect] = useState(false);
 
     async function registerUser(ev){
         ev.preventDefault();
@@ -16,10 +17,20 @@ export default function RegisterPage(){
                 password,
             })
             alert('Registration successful. Now you can login!')
+            setRedirect(true);
         }catch(e){
-            alert('Registration failed. Please try again later!')
+            if(e.response.status === 422){
+                alert('You have already registered. Please Login');
+                setRedirect(true);
+            }
+            else{
+                alert('Registration failed. Please try again later!')
+            }
         }
-        
+    }
+
+    if(redirect){
+        return <Navigate to = {'/login'} />
     }
 
     return (
