@@ -37,7 +37,31 @@ app.get('/test',(req,res) =>{
     res.json('')
 });
 
-app.listen(4000)
+app.post('/login', async (req,res) => {
+  const {email,password} = req.body;
+  const userDoc = await User.findOne({email})
+
+  if(userDoc){
+    const result = 'Email found';
+    const passOk = (password == userDoc.password ? 1:0)
+
+    if(passOk){
+      res.json(result + ' and ' + 'Pass is right!')
+    }else{
+      res.status(422).json(result + ' but ' + 'Pass is wrong!')
+    }
+  }
+  else{
+    
+    res.status(422).json('Email Not found')
+  }
+})
+
+const port = 4000;
+
+app.listen(port,()=>{
+  console.log(`server is running on port ${port}`)
+})
 
 
 // Listen for the open event

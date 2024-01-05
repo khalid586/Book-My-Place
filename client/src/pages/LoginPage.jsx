@@ -1,13 +1,35 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import axios from "axios"
 
 export default function LoginPage(){
+    const [email,setEmail] = useState('')
+    const [password,setPassword] = useState('')
+
+    async function loginSubmit(ev){
+        ev.preventDefault()
+
+        try{
+            await axios.post('/login',{email,password});
+            alert('Login successful')
+        } catch(e){
+            alert('Login failed')
+        }
+    }
+
     return (
         <>
             <div className="py-20">
                 <p className="text-4xl pb-4">Login</p>
-                <form>
-                    <input type="email" placeholder="your@gmail.com"/><br></br>
-                    <input type="password" placeholder="password" /><br></br>
+                <form onSubmit={loginSubmit}>
+                    <input type="email" placeholder="your@gmail.com" 
+                        value={email} 
+                        onChange={ ev => setEmail(ev.target.value)}/> <br></br>
+
+                    <input type="password" placeholder="password" 
+                        value={password} 
+                        onChange={ ev => setPassword(ev.target.value)}/><br></br>
+
                     <button className="primary">Login</button>
                 </form>
                 <div className="text-gray-500">
@@ -18,4 +40,4 @@ export default function LoginPage(){
             
         </>
     )
-}
+}                   
