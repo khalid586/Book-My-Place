@@ -34,10 +34,6 @@ app.post('/register',async (req,res) =>{
 })
 
 
-app.get('/test',(req,res) =>{
-    res.json('')
-});
-
 const jwtSecret = 'tiowerijwedfnsdiofhsdfmsdfklj'
 
 app.post('/login', async (req,res) => {
@@ -73,7 +69,11 @@ app.listen(port,()=>{
 })
 
 app.get('/', (req, res) => {
-  res.send('Hello, World, just checking!');
+  res.send('Hello World, just checking!');
+});
+
+app.get('/test',(req,res) =>{
+  res.send('this is test')
 });
 
 // Listen for the open event
