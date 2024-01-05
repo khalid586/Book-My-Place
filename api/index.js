@@ -4,6 +4,7 @@ const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./models/User.js')
 const app = express()
+const jwt = require('jsonwebtoken');
 
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
 
@@ -37,6 +38,8 @@ app.get('/test',(req,res) =>{
     res.json('')
 });
 
+const jwtSecret = 'tiowerijwedfnsdiofhsdfmsdfklj'
+
 app.post('/login', async (req,res) => {
   const {email,password} = req.body;
   const userDoc = await User.findOne({email})
@@ -46,7 +49,12 @@ app.post('/login', async (req,res) => {
     const passOk = (password == userDoc.password ? 1:0)
 
     if(passOk){
-      res.json(result + ' and ' + 'Pass is right!')
+      jwt.sign({email:userDoc.email,id:userDoc._id},jwtSecret,{},(err,token) =>{
+        if(err) throw err;
+        res.cookie('token',token).json(result + ' and ' + 'Pass is right!')
+      })
+
+    //  res.json(result + ' and ' + 'Pass is right!')
     }else{
       res.status(422).json(result + ' but ' + 'Pass is wrong!')
     }
@@ -59,10 +67,14 @@ app.post('/login', async (req,res) => {
 
 const port = 4000;
 
+
 app.listen(port,()=>{
   console.log(`server is running on port ${port}`)
 })
 
+app.get('/', (req, res) => {
+  res.send('Hello, World, just checking!');
+});
 
 // Listen for the open event
 mongoose.connection.once('open', () => {
