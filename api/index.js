@@ -5,8 +5,11 @@ const mongoose = require('mongoose')
 const User = require('./models/User.js')
 const app = express()
 const jwt = require('jsonwebtoken');
+const CookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser')
 
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
+app.use(cookieParser())
 
 app.use(cors({
     credentials: true,
@@ -47,7 +50,7 @@ app.post('/login', async (req,res) => {
     if(passOk){
       jwt.sign({email:userDoc.email,id:userDoc._id},jwtSecret,{},(err,token) =>{
         if(err) throw err;
-        res.cookie('token',token).json(result + ' and ' + 'Pass is right!')
+        res.cookie('token',token).json(userDoc)
       })
 
     //  res.json(result + ' and ' + 'Pass is right!')
@@ -59,6 +62,16 @@ app.post('/login', async (req,res) => {
     
     res.status(422).json('Email Not found')
   }
+})
+
+app.get('/profile',(req,res)=>{
+  const {token} = req.cookies;
+  if(token){
+    res.json({token})
+  }
+
+ // res.json('just checking profile')
+  
 })
 
 const port = 4000;
