@@ -6,10 +6,10 @@ const User = require('./models/User.js')
 const app = express()
 const jwt = require('jsonwebtoken');
 const CookieParser = require('cookie-parser')
-const cookieParser = require('cookie-parser')
+
 
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
-app.use(cookieParser())
+app.use(CookieParser())
 
 app.use(cors({
     credentials: true,
@@ -67,7 +67,14 @@ app.post('/login', async (req,res) => {
 app.get('/profile',(req,res)=>{
   const {token} = req.cookies;
   if(token){
-    res.json({token})
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const {name,email,_id} = await User.findById(userData.id);
+      res.json({name,email,_id});
+    });
+  }
+  else{
+    res.json('null')
   }
 
  // res.json('just checking profile')
