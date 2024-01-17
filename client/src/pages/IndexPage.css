@@ -14,14 +14,14 @@
     padding: 20px;
     justify-content: center;
     margin: 30px;
-    background-color: #ff385c;
-    color: white;
     border-radius: 30px;
     font-weight: 600;
-  }
-  .btn:hover{
     color:#ff385c;
     background-color: white;
+}
+.btn:hover{
+      background-color: #ff385c;
+      color: white;
   }
   .room-card:hover {
     transform: scale(1.3); 

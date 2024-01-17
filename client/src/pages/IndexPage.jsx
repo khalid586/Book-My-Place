@@ -24,9 +24,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 102" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 102</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
@@ -36,9 +36,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 103" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 103</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
@@ -48,9 +48,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 201" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 201</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
@@ -60,9 +60,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 121" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 121</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
@@ -72,9 +72,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 301" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 301</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
@@ -84,9 +84,9 @@ export default function IndexPage(){
                     <button className="btn"> Book Now</button>
                 </div>
                 <div className="room-card">
-                    <img src="images/img1.jpg" alt="Room 101" className="room-image" />
+                    <img src="images/img1.jpg" alt="Room 501" className="room-image" />
                     <div className="room-details">
-                        <p className="room-title">Room 101</p>
+                        <p className="room-title">Room 501</p>
                         <div className="room-rating">
                         <i className="fa-solid fa-star"></i>
                         </div>
