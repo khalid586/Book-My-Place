@@ -20,7 +20,7 @@ export default function Account() {
   if(!ready){
     return (
       <div className="text-center max-w-lg mx-auto">
-          <br />Page loading... <br />
+          <br /><br />
           <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
         </div>
     )
