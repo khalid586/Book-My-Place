@@ -9,6 +9,20 @@
     gap: 2rem;
   }
   
+  .btn{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    margin: 30px;
+    background-color: #ff385c;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+  }
+  .btn:hover{
+    color:#ff385c;
+    background-color: white;
+  }
   .room-card:hover {
     transform: scale(1.3); 
     box-shadow: 0 0 50px #ff385c;
@@ -23,18 +37,19 @@
     flex-direction: column;
     height: 100%;
     width: 100%;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
     border-radius: 8px;
     overflow: hidden;
-    padding: 10px;
+    /* padding: 10px; */
     transition: transform .4s ease-in-out, box-shadow .8s ease-in-out;
   }
   
   .room-image {
     border-radius: 1%;
     width: 100%;
-    height: 300px;
+    height: 340px;
     object-fit: cover;
+    
   }
   
   .room-details {
