@@ -12,9 +12,13 @@ export default function Account() {
   }
 
   async function logout() {
+    alert("You have logged out")
     await axios.post('/logout');
     setRedirect('/');
     setUser(null);
+  }
+  if(redirect){
+    return <Navigate to = {redirect}/>
   }
 
   if(!ready){
@@ -26,9 +30,6 @@ export default function Account() {
         </div>
     )
   }
-  if(redirect){
-    return <Navigate to = {redirect}/>
-  }
 
   return (
     <div>
@@ -36,7 +37,7 @@ export default function Account() {
         <div className="text-center max-w-lg mx-auto">
           <br />
           <b>This is account page</b>
-          <button onClick={logout} className="primary max-w-sm">Logout</button>
+          <button onClick={logout} className=".btn">Logout</button>
         </div>
     </div>
     
