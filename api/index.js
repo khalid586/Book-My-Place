@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URL)
 const validateRegistration = [
   body('name').notEmpty().withMessage('Username is required'),
   body('email').isEmail().withMessage('Invalid email').notEmpty().withMessage('Email is required'),
-  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  body('password').isLength({ min: 2 }).withMessage('Password must be at least 2 characters'),
   // Add validation rules for other fields
 
   // Custom validation logic if needed
@@ -37,11 +37,25 @@ const validateRegistration = [
   },
 ];
 
+const validateLogin = [
+  body('email').isEmail().withMessage('Invalid Email').notEmpty().withMessage('Email is required'),
+  body('password').isLength({ min: 2 }).withMessage('Password is at least 2 characters'),
+  // Add validation rules for other fields
+
+  // Custom validation logic if needed
+
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
+]
+
 app.post('/register',validateRegistration,async (req,res) =>{
     try{
       const {name,email,password} = req.body
-
-
       const UserDoc = await User.create({
         name,
         email,
@@ -59,7 +73,7 @@ app.post('/register',validateRegistration,async (req,res) =>{
 
 const jwtSecret = 'tiowerijwedfnsdiofhsdfmsdfklj'
 
-app.post('/login', async (req,res) => {
+app.post('/login', validateLogin,async (req,res) => {
   const {email,password} = req.body;
   const userDoc = await User.findOne({email})
 
