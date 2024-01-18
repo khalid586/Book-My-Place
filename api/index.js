@@ -7,6 +7,7 @@ const app = express()
 const jwt = require('jsonwebtoken');
 const CookieParser = require('cookie-parser')
 
+const { body, validationResult } = require('express-validator');
 
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
 app.use(CookieParser())
@@ -18,9 +19,29 @@ app.use(cors({
 
 mongoose.connect(process.env.MONGO_URL)
 
-app.post('/register',async (req,res) =>{
+// Validation middleware
+const validateRegistration = [
+  body('name').notEmpty().withMessage('Username is required'),
+  body('email').isEmail().withMessage('Invalid email').notEmpty().withMessage('Email is required'),
+  body('password').isLength({ min: 6 }).withMessage('Password must be at least 6 characters'),
+  // Add validation rules for other fields
+
+  // Custom validation logic if needed
+
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    next();
+  },
+];
+
+app.post('/register',validateRegistration,async (req,res) =>{
     try{
       const {name,email,password} = req.body
+
+
       const UserDoc = await User.create({
         name,
         email,
