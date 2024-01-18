@@ -20,7 +20,21 @@ export default function LoginPage(){
             alert('Login successful')
             setRedirect(true);
         } catch(e){
-            alert('Login failed')
+            if (e.response.status === 400) {
+                const errorResponse = e.response.data; 
+                if (errorResponse && errorResponse.errors && errorResponse.errors.length > 0) {
+                    let errorMessage = "Registration failed due to the following errors:\n";
+                    errorResponse.errors.forEach(error => {
+                    errorMessage += `${error.msg}\n`;
+                });
+                    alert(errorMessage);
+                }else {
+                    alert('An unknown error occurred during registration.');
+                }
+            }
+            else{
+                alert(e.response.data)
+            }
         }
     }
 

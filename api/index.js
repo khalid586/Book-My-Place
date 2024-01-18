@@ -24,9 +24,7 @@ const validateRegistration = [
   body('name').notEmpty().withMessage('Username is required'),
   body('email').isEmail().withMessage('Invalid email').notEmpty().withMessage('Email is required'),
   body('password').isLength({ min: 2 }).withMessage('Password must be at least 2 characters'),
-  // Add validation rules for other fields
 
-  // Custom validation logic if needed
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -40,9 +38,7 @@ const validateRegistration = [
 const validateLogin = [
   body('email').isEmail().withMessage('Invalid Email').notEmpty().withMessage('Email is required'),
   body('password').isLength({ min: 2 }).withMessage('Password is at least 2 characters'),
-  // Add validation rules for other fields
 
-  // Custom validation logic if needed
 
   (req, res, next) => {
     const errors = validationResult(req);
@@ -89,7 +85,7 @@ app.post('/login', validateLogin,async (req,res) => {
 
     //  res.json(result + ' and ' + 'Pass is right!')
     }else{
-      res.status(422).json(result + ' but ' + 'Pass is wrong!')
+      res.status(422).json(result + ' but ' + 'Password is wrong!')
     }
   }
   else{
