@@ -36,7 +36,6 @@ app.post('/register',async (req,res) =>{
     }
 })
 
-
 const jwtSecret = 'tiowerijwedfnsdiofhsdfmsdfklj'
 
 app.post('/login', async (req,res) => {

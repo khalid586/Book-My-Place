@@ -20,7 +20,8 @@ export default function Account() {
   if(!ready){
     return (
       <div className="text-center max-w-lg mx-auto">
-          <br /><br />
+          <br />
+          <b>This is account page</b> <br />
           <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
         </div>
     )
@@ -33,8 +34,9 @@ export default function Account() {
     <div>
         <h1>This is account page for {user.name}</h1>
         <div className="text-center max-w-lg mx-auto">
-          {/* Logged in as {user.name} ({user.email})<br /> */}
-          <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
+          <br />
+          <b>This is account page</b>
+          <button onClick={logout} className="primary max-w-sm">Logout</button>
         </div>
     </div>
     
