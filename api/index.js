@@ -1,16 +1,17 @@
-require('dotenv').config()
-const express = require('express')
-const cors = require('cors')
-const mongoose = require('mongoose')
-const User = require('./models/User.js')
-const app = express()
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const User = require('./models/User.js');
+const app = express();
 const jwt = require('jsonwebtoken');
-const CookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const imageDownloader = require('image-downloader'); 
 
 const { body, validationResult } = require('express-validator');
 
+require('dotenv').config();
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
-app.use(CookieParser())
+app.use(cookieParser())
 
 app.use(cors({
     credentials: true,
@@ -115,8 +116,17 @@ app.get('/profile',(req,res)=>{
   
 })
 
-const port = 4000;
+app.post('/upload-by-link', async(req,res) =>{
+  const{link} = req.body;
+  const newName = Date.now() + '.jpg';
+  await imageDownloader.image({
+    url:link,
+    dest: __dirname+ '/uploads' + newName,
+  });
+  res.json(__dirname + '/uploads/' + newName);
+})
 
+const port = 4000;
 
 app.listen(port,()=>{
   console.log(`server is running on port ${port}`)
