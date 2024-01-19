@@ -51,13 +51,21 @@ export default function PlacesPage(){
                             <input value={photoLink} onChange={ev => setPhotoLink(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Add photos using link" />
                             <button onClick={addPhotoByLink} className="bg-gray-200 px-4 py-1 rounded-2xl">Add Photo</button>
                         </div>
-                        {addedPhotos.length > 0 && addedPhotos.map(link =>(
+                        <div className="w-1/3 mt-2 grid grid-cols-3">
+                            {addedPhotos.length > 0 && addedPhotos.map(link =>(
+                                <div>
+                                    <img align = "center" width = "120px" height = "80px" src={'http://localhost:4000/uploads/'+link} alt="" />
+                                </div>
+                            ))}
                             <div>
-                                <img src={'http://localhost:4000/uploads/'+link} alt="" />
+
+                                <button className="flex gap-2 border py-6 px-6 text-white bg-slate-300 hover:bg-primary font-bold mt-2 rounded-2xl">  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                                    </svg>
+                                    Upload
+                                </button>
+
                             </div>
-                        ))}
-                        <div>
-                            <button className="border p-4 bg-green-500 hover:bg-primary text-white font-bold mt-2 rounded-2xl">Upload</button>
                         </div>
                         <h2 className="text-2xl mt-4 font-bold"> Description</h2>
                         <p className="font-medium">Description of your place</p>

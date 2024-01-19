@@ -20,7 +20,7 @@ button.primary{
 }
 button.primary1{
     background-color: #f53850;
-    @apply bg-primary my-10 py-2 w-full text-white rounded-full
+    @apply bg-primary my-10 py-5 font-semibold w-full text-white rounded-full
 }
 
 
