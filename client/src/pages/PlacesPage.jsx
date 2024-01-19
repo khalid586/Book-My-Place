@@ -74,6 +74,24 @@ export default function PlacesPage(){
                             </label>
                         </div>
 
+                        <h2 className="text-2xl mt-4 font-bold"> Check in & Check out time</h2>
+                        <p className="text-sm text-gray-500">Add check in and check out time and maximum number of guests you can accomodate</p>
+
+                        <div className="grid gap-2 sm:grid-cols-3 mt-5">
+                            <div>
+                                <h3 className="mt-2 mb-1">Check in time</h3>
+                                <input type="text" placeholder="14:00" />
+                            </div>
+                            <div>
+                                <h3 className="mt-2 mb-1">Check out time</h3>
+                                <input type="text" placeholder="15:00" />
+                            </div>
+                            <div>
+                                <h3 className="mt-2 mb-1">Maximum number of guests</h3>
+                                <input type="text" placeholder="3" />
+                            </div>
+                        </div>
+                        <button className="primary1"> Save </button>
                     </form>
                 </div>
             )}
