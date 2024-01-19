@@ -22,7 +22,7 @@ export default function Account() {
   if(!ready){
     return 'Loading...'
   }
-  if(ready && !user){
+  if(ready && !user && !redirect){
     return <Navigate to = {'/login'}/>
   }
 
@@ -52,8 +52,9 @@ export default function Account() {
               <Link className= {linkClasses('bookings')} to = {'/account/bookings'}> My Bookings</Link>
               <Link className= {linkClasses('places')} to = {'/account/places'}>My accomodations</Link>
             </nav>
-            
-            <button onClick={logout} className="primary">Logout</button>
+
+            {subpage === 'profile' && <button onClick={logout} className="primary">Logout</button>
+}
           </div>
       </div>
     
