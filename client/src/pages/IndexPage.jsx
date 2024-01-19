@@ -24,7 +24,7 @@ export default function IndexPage(){
                         <p className="room-date gray-text">22-27 Jul</p>
                         <p className="room-price text-sm font-medium mt-2">$150 per day</p>
                     </div>
-                    <Link to={user?"/account":"/login"} className="btn">Book Now</Link>
+                    <Link to={user?"/account/bookings":"/login"} className="btn">Book Now</Link>
                 </div>
                 <div className="room-card">
                     <img src="images/img2.jpg" alt="Room 102" className="room-image" />
@@ -36,7 +36,7 @@ export default function IndexPage(){
                         <p className="room-date gray-text">22-27 Jul</p>
                         <p className="room-price text-sm font-medium mt-2">$150 per day</p>
                     </div>
-                    <Link to={user?"/account":"/login"} className="btn">Book Now</Link>
+                    <Link to={user?"/account/bookings":"/login"} className="btn">Book Now</Link>
                 </div>
                 <div className="room-card">
                     <img src="images/img3.jpg" alt="Room 103" className="room-image" />
@@ -48,7 +48,7 @@ export default function IndexPage(){
                         <p className="room-date gray-text">22-27 Jul</p>
                         <p className="room-price text-sm font-medium mt-2">$150 per day</p>
                     </div>
-                    <Link to={user?"/account":"/login"} className="btn">Book Now</Link>
+                    <Link to={user?"/account/bookings":"/login"} className="btn">Book Now</Link>
                 </div>
                 <div className="room-card">
                     <img src="images/img3.jpg" alt="Room 201" className="room-image" />
