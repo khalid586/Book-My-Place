@@ -26,15 +26,36 @@ export default function Account() {
     return <Navigate to = {'/login'}/>
   }
 
-  return (
-    <div>
+  let {subpage} = useParams();
+  if(subpage === undefined){
+    subpage = 'profile';
+  }
 
-        <div className="text-center max-w-lg mx-auto">
-          <br />
-          <b>This is account page for {user.name} - {user.email}</b> <br />
-          <button onClick={logout} className="primary max-w-sm mt-2">Logout</button>
-        </div>
-    </div>
+  function linkClasses (type = null){
+    let classes = 'py-2 px-6 font-semibold ';
+    if (type === subpage){
+      classes +=  'bg-primary text-white rounded-full';
+    }
+    return classes;
+  }
+
+
+    return (
+      <div>
+
+          <div className="text-center max-w-lg mx-auto">
+            <br /> 
+            {/* <b>This is account page for {user.name} - {user.email}</b> <br /> */}
+            
+            <nav className='w-full flex justify-center mb-10 mt-8 gap-2'>
+              <Link className= {linkClasses('profile')} to = {'/account'}> My Profile </Link>
+              <Link className= {linkClasses('bookings')} to = {'/account/bookings'}> My Bookings</Link>
+              <Link className= {linkClasses('places')} to = {'/account/places'}>My accomodations</Link>
+            </nav>
+            
+            <button onClick={logout} className="primary">Logout</button>
+          </div>
+      </div>
     
   )
 }
