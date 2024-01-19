@@ -16,7 +16,11 @@ export default function PlacesPage(){
 
     async function  addPhotoByLink(ev){
         ev.preventDefault();
-        await axios.post('/upload-by-link',{link:photoLink})
+        const {data:filename} = await axios.post('/upload-by-link',{link:photoLink})
+        setAddedPhotos(prev => {
+            return [...prev , filename];
+        });
+        setPhotoLink('');
     }
     return(
         <div>
@@ -47,7 +51,11 @@ export default function PlacesPage(){
                             <input value={photoLink} onChange={ev => setPhotoLink(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Add photos using link" />
                             <button onClick={addPhotoByLink} className="bg-gray-200 px-4 py-1 rounded-2xl">Add Photo</button>
                         </div>
-                        
+                        {addedPhotos.length > 0 && addedPhotos.map(link =>(
+                            <div>
+                                <img src={'http://localhost:4000/uploads/'+link} alt="" />
+                            </div>
+                        ))}
                         <div>
                             <button className="border p-4 bg-green-500 hover:bg-primary text-white font-bold mt-2 rounded-2xl">Upload</button>
                         </div>
