@@ -25,10 +25,10 @@
   }
   .room-card:hover {
     transform: scale(1.2); 
-    box-shadow: 0 0 30px greenyellow;
+    box-shadow: 10px 10px 0px red;
   }
   .room-card:hover .room-image {
-    border: 5px solid greenyellow;
+    border: 5px solid red;
   }
   
   .room-card {
