@@ -6,7 +6,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const imageDownloader = require('image-downloader'); 
-
+const multer = require('multer');
 const { body, validationResult } = require('express-validator');
 
 require('dotenv').config();
@@ -119,7 +119,6 @@ app.get('/profile',(req,res)=>{
 
 app.post('/upload-by-link', async(req,res) =>{
   const{link} = req.body;
-  console.log(req.body);
 
   try{
     const newName = 'photo'+ Date.now() + '.jpg';
