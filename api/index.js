@@ -145,7 +145,7 @@ app.post('/places', (req,res) =>{
   } = req.body;
   
   jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-     if (err) throw err;
+      // if (err) throw err;
      const placeDoc = await PlaceModel.create({
       title,address,addedPhotos,description,
       checkIn,checkOut,maxGuests,
