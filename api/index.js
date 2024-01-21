@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 const imageDownloader = require('image-downloader'); 
 const multer = require('multer');
 const { body, validationResult } = require('express-validator');
+const PlaceModel = require('./models/place.js');
+
 
 require('dotenv').config();
 app.use(express.json()) // without using this data won't converted in json format and can't be shown as well
@@ -134,6 +136,25 @@ app.post('/upload-by-link', async(req,res) =>{
   }
 
 })
+
+app.post('/places', (req,res) =>{
+  const {token} = req.cookies;
+  const{
+    title,address,addedPhotos,description,
+    checkIn,checkOut,maxGuests,
+  } = req.body;
+  
+  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+     if (err) throw err;
+     const placeDoc = await PlaceModel.create({
+      title,address,addedPhotos,description,
+      checkIn,checkOut,maxGuests,
+    });
+    res.json(placeDoc);
+  });
+
+})
+
 
 const port = 4000;
 

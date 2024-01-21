@@ -22,10 +22,13 @@ export default function PlacesPage(){
         });
         setPhotoLink('');
     }
-    function uploadPhoto(ev){
-        const files = ev.target.files;
-        const data = new FormData();
-        data.set
+
+    async function addNewPlace(ev){
+        ev.preventDefault();
+        await axios.post('/places',{
+            title,address,addedPhotos,description,
+            checkIn,checkOut,maxGuests
+        });
     }
     return(
         <div>
@@ -41,7 +44,7 @@ export default function PlacesPage(){
 
             {action === 'new' && (
                 <div>
-                    <form className="text-left font-serif">
+                    <form onSubmit={addNewPlace} className="text-left font-serif">
                         <h2 className="text-2xl mt-4 font-bold"> Title</h2>
                         <p className="font-medium">Title for your place,should be short</p>
                         <input value={title} onChange={ev => setTitle(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Title " /><br />
@@ -72,7 +75,7 @@ export default function PlacesPage(){
                         <p className="font-medium">Description of your place</p>
                         <textarea value={description} onChange={ev => setDescription(ev.target.value)}/>
 
-                        <h2 className="text-2xl mt-4 font-bold"> Perks</h2>
+                        {/* <h2 className="text-2xl mt-4 font-bold"> Perks</h2>
                         <p className="font-medium">Select all the perks</p>
 
                         <div className="py-2 grid gap-2 grid-cols-3">
@@ -104,7 +107,7 @@ export default function PlacesPage(){
                                     Free food
                                 </span>
                             </label>
-                        </div>
+                        </div> */}
 
                         <h2 className="text-2xl mt-4 font-bold"> Check in & Check out time</h2>
                         <p className="text-sm text-gray-500">Add check in and check out time and maximum number of guests you can accomodate</p>
@@ -112,15 +115,15 @@ export default function PlacesPage(){
                         <div className="grid gap-2 sm:grid-cols-3 mt-5">
                             <div>
                                 <h3 className="mt-2 mb-1">Check in time</h3>
-                                <input value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="text" placeholder="14:00" />
+                                <input value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="number" placeholder="14" />
                             </div>
                             <div>
                                 <h3 className="mt-2 mb-1">Check out time</h3>
-                                <input value = {checkOut} onChange={ev => setCheckOut(ev.target.value)} type="text" placeholder="15:00" />
+                                <input value = {checkOut} onChange={ev => setCheckOut(ev.target.value)} type="number" placeholder="15" />
                             </div>
                             <div>
                                 <h3 className="mt-2 mb-1">Maximum number of guests</h3>
-                                <input value = {maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="text" placeholder="1" />
+                                <input value = {maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="number" placeholder="1" />
                             </div>
                         </div>
                         <button className="primary1"> Save </button>
