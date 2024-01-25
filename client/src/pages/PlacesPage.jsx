@@ -50,11 +50,11 @@ export default function PlacesPage(){
                         <input value={title} onChange={ev => setTitle(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Title " /><br />
                         <h2 className="text-2xl mt-4 font-bold"> Address</h2>
                         <p className="font-medium">Address to this place</p>
-                        <input value={address} onChange={ev => setAddress(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Address" />
+                        <input required value={address} onChange={ev => setAddress(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Address" />
                         <h2 className="text-2xl mt-4 font-bold"> Photos</h2>
                         <p className="font-medium">Add photos of your place</p>
                         <div className="flex gap-2">
-                            <input value={photoLink} onChange={ev => setPhotoLink(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Add photos using link" />
+                            <input required value={photoLink} onChange={ev => setPhotoLink(ev.target.value)} className="text-gray-500 text-sm" type="text" placeholder="Add photos using link" />
                             
                             <button onClick={addPhotoByLink} className="bg-gray-400 hover:bg-primary flex px-4 py-3 gap-1 text-white rounded-2xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -68,12 +68,12 @@ export default function PlacesPage(){
                                 <div>
                                     <img className=" rounded-md w-3/4 h-3/4" align = "center" src={'http://localhost:4000/uploads/'+link} alt="" />
                                 </div>
-                            ))}
+                            ))} 
 
                         </div>
                         <h2 className="text-2xl mt-4 font-bold"> Description</h2>
                         <p className="font-medium">Description of your place</p>
-                        <textarea value={description} onChange={ev => setDescription(ev.target.value)}/>
+                        <textarea required value={description} onChange={ev => setDescription(ev.target.value)}/>
 
                         {/* <h2 className="text-2xl mt-4 font-bold"> Perks</h2>
                         <p className="font-medium">Select all the perks</p>
@@ -115,15 +115,15 @@ export default function PlacesPage(){
                         <div className="grid gap-2 sm:grid-cols-3 mt-5">
                             <div>
                                 <h3 className="mt-2 mb-1">Check in time</h3>
-                                <input value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="number" placeholder="14" />
+                                <input required value={checkIn} onChange={ev => setCheckIn(ev.target.value)} type="number" placeholder="14" />
                             </div>
                             <div>
                                 <h3 className="mt-2 mb-1">Check out time</h3>
-                                <input value = {checkOut} onChange={ev => setCheckOut(ev.target.value)} type="number" placeholder="15" />
+                                <input required value = {checkOut} onChange={ev => setCheckOut(ev.target.value)} type="number" placeholder="15" />
                             </div>
                             <div>
                                 <h3 className="mt-2 mb-1">Maximum number of guests</h3>
-                                <input value = {maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="number" placeholder="1" />
+                                <input readOnly value = {maxGuests} onChange={ev => setMaxGuests(ev.target.value)} type="number" placeholder="1" />
                             </div>
                         </div>
                         <button className="primary1"> Save </button>

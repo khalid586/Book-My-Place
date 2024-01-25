@@ -20,9 +20,6 @@ export default function Account() {
     return <Navigate to = {redirect}/>
   }
 
-  if(!ready){
-    return 'Loading...'
-  }
   if(ready && !user && !redirect){
     return <Navigate to = {'/login'}/>
   }
