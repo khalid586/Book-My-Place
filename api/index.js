@@ -29,6 +29,7 @@ const validateRegistration = [
   body('email').isEmail().withMessage('Invalid email').notEmpty().withMessage('Email is required'),
   body('password').isLength({ min: 2 }).withMessage('Password must be at least 2 characters'),
 
+  
 
   (req, res, next) => {
     const errors = validationResult(req);
